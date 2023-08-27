@@ -24,13 +24,21 @@ function Calculation()
 {
     numberList.push(parseInt(string))
     number=numberList[0]
+     var result =0
     for(var i =0 ; i<opeartorList.length;i++)
     {
-      number = PerformCalculation(number,opeartorList[i],numberList[i+1])
+        if((opeartorList[i] == '+' || opeartorList[i] == '-') && (opeartorList[i+1] == '*' || opeartorList[i] == '/'))
+        {
+            result =PerformCalculation(numberList[i+1],opeartorList[i+1],numberList[i+2]);
+            number = PerformCalculation(number,opeartorList[i],result);
+            i++;
+        }
+        else{
+            number = PerformCalculation(numberList[i],opeartorList[i],numberList[i+1]);
+        }
     }
-     text = number;
-
-     ShowInput()
+    text = number;
+    ShowInput()
 }
 
 function PerformCalculation(num1, operator, num2) {
