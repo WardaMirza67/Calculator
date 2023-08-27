@@ -27,7 +27,7 @@ function Calculation()
      var result =0
     for(var i =0 ; i<opeartorList.length;i++)
     {
-        if((opeartorList[i] == '+' || opeartorList[i] == '-') && (opeartorList[i+1] == '*' || opeartorList[i] == '/'))
+        if((opeartorList[i] == '+' || opeartorList[i] == '-') && (opeartorList[i+1] == '*' || opeartorList[i+1] == '/'))
         {
             result =PerformCalculation(numberList[i+1],opeartorList[i+1],numberList[i+2]);
             number = PerformCalculation(number,opeartorList[i],result);
@@ -37,8 +37,12 @@ function Calculation()
             number = PerformCalculation(numberList[i],opeartorList[i],numberList[i+1]);
         }
     }
+    numberList = []
+    opeartorList = []
+    string=''
     text = number;
     ShowInput()
+    
 }
 
 function PerformCalculation(num1, operator, num2) {
